@@ -1,0 +1,69 @@
+body{
+    margin: 0px;
+}
+.Ring{
+    position: relative;
+    display: block;
+    -webkit-user-select:none;
+}
+.Ring > .Button{
+    position: absolute;
+    display: block;
+    background-color: #3fcbff;
+    cursor: pointer;
+}
+.Ring > .Button:hover{
+    background-color: #82ddff;    
+}
+.Ring > .TextFrame > .Text{
+    font-size: 30px;
+    text-align: center;
+}
+.Ring > .TextFrame{
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    display:flex;
+    align-items:center;
+    justify-content:center; 
+}
+
+.Ring > .TextFrame{
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    display:flex;
+    align-items:center;
+    justify-content:center; 
+}
+.Ring > .SVG > .RateBg{
+    stroke-width:8;
+    stroke: #d8d8d8;
+}
+.Ring > .SVG > .Rate{
+    stroke-width:4;
+    stroke: #27678e;
+}
+.Ring.disable{
+}
+.Ring.disable > .Button{
+    background-color: #717171;
+}
+.Ring.disable > .Button{
+    background-color: #3b3b3b;
+}
+.Ring.disable > .TextFrame{
+}
+
+.Ring.disable > .SVG > .RateBg{
+    stroke: #aaaaaa;
+}
+.Ring.disable > .SVG > .Rate{
+    stroke: #343434;
+}
