@@ -78,7 +78,14 @@ var getPosition = function(el) {
 }
 var Ring = React.createClass({
     getInitialState: function() {
-        return {rate:this.props.rate || 0,Mousedown:false,enable:(this.props.enable==undefined)?true:this.props.enable,radius:(this.props.radius==undefined)?80:this.props.radius,buttonRadius:(this.props.buttonRadius==undefined)?10:this.props.buttonRadius,onChange:this.props.onChange};
+        return {
+            rate:this.props.rate || 0,
+            Mousedown:false,
+            enable:(this.props.enable==undefined)?true:this.props.enable,
+            radius:(this.props.radius==undefined)?80:this.props.radius,
+            buttonRadius:(this.props.buttonRadius==undefined)?10:this.props.buttonRadius,
+            onChange:this.props.onChange
+        };
     },
     componentDidMount:function(rootNode){    
     },
