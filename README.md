@@ -6,9 +6,8 @@
 |設置|默認值|描述|
 |---|---|---|
 |rate|`0`|滑動的比例，範圍(0 ~ 1)|
-|radius|`80`|圈的半徑|
-|buttonRadius|`80`|按鈕半徑|
-|open|`false`|開關,值(true或false)|
+|radius|`80`|圈半徑|
+|buttonRadius|`10`|按鈕半徑|
 |enable|`true`|啟動,值(true或false)|
 ### 事件
 |設置|描述|
