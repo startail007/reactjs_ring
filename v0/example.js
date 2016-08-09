@@ -78,20 +78,21 @@ var getPosition = function(el) {
 }
 var Ring = React.createClass({
     getInitialState: function() {
-        return {rate:this.props.rate || 0,Mousedown:false,enable:(this.props.enable==undefined)?true:this.props.enable,radius:(this.props.radius==undefined)?80:this.props.radius,buttonRadius:(this.props.buttonRadius==undefined)?10:this.props.buttonRadius};
+        return {rate:this.props.rate || 0,Mousedown:false,enable:(this.props.enable==undefined)?true:this.props.enable,radius:(this.props.radius==undefined)?80:this.props.radius,buttonRadius:(this.props.buttonRadius==undefined)?10:this.props.buttonRadius,changeFun:this.props.onChange};
     },
     componentDidMount:function(rootNode){    
-    }, 
+    },
+    componentDidUpdate: function(prevProps, prevState){
+        if(this.state.changeFun){
+            this.state.changeFun.call(this,this.state.rate);
+        }
+    },
     onMouseDown: function(e) {
         if(this.state.enable){
             var p0 = getPosition(this.refs.button).add(new Point(this.state.buttonRadius,this.state.buttonRadius));
             var p1 = getPosition(this.refs.ring);
-            this.LocP = new Point(e.clientX - p0.x,e.clientY - p0.y); 
-            //console.log(this.LocP)
-            var m = new Point(e.clientX,e.clientY)
-            
-            var p = getPosition(this.refs.ring); 
-            var vector01 = m.sub(this.LocP).sub(p).sub(new Point(this.state.radius+this.state.buttonRadius,this.state.radius+this.state.buttonRadius));         
+            this.LocP = new Point(e.clientX - p0.x,e.clientY - p0.y);
+            var vector01 = p0.sub(p1).sub(new Point(this.state.radius+this.state.buttonRadius,this.state.radius+this.state.buttonRadius));         
             var angle = MathEx.VectorAngle(vector01, new Point(1,0));  
             angle = angle<0?angle+360:angle;
             this.SetRate(angle/360);    
@@ -102,7 +103,7 @@ var Ring = React.createClass({
     },
     SetRate:function(value){
         var rate = Math.min(Math.max(value,0),1);
-        this.setState({rate:rate});  
+        this.setState({rate:rate});       
     },
     onMouseMove: function(e) {
         if(this.state.Mousedown){
@@ -149,11 +150,13 @@ var Ring = React.createClass({
     }
 });
 
-ReactDOM.render(
-    <Ring rate = {0.5} radius = {80}/>,
+var Ring01 = ReactDOM.render(
+    <Ring rate = {0.5} radius = {80} onChange = {onChange}/>,
     document.getElementById('example01')
 );
-
+function onChange(value){
+    console.log(value)
+}
 ReactDOM.render(
     <Ring radius = {80} enable = {false}/>,
     document.getElementById('example02')
